@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northern Light WiFi –  အမြန်ဆုံး အတန်ဆုံး အင်တာနက်</title>
+  <meta name="description" content="Fast & Affordable Internet for Tea Shops and Cafes. Buy WiFi voucher codes instantly via Telegram." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary:   #080c14;
+      --bg-secondary: #0d1422;
+      --bg-card:      #111827;
+      --bg-card-hover:#141f35;
+      --blue-400:     #60a5fa;
+      --blue-500:     #3b82f6;
+      --blue-600:     #2563eb;
+      --blue-glow:    rgba(59,130,246,.35);
+      --text-primary: #f1f5f9;
+      --text-muted:   #94a3b8;
+      --text-dim:     #64748b;
+      --border:       rgba(59,130,246,.18);
+      --radius:       14px;
+      --radius-lg:    22px;
+      --transition:   .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── Scrollbar ─────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--blue-600); border-radius: 3px; }
+
+    /* ─── Utility ───────────────────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 100px 0; }
+    .section-label {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue-400);
+      background: rgba(59,130,246,.1);
+      border: 1px solid rgba(59,130,246,.25);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 540px;
+    }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    /* ─── Glow blob background ──────────────────────────────────── */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── NAV ───────────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      background: rgba(8,12,20,.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta {
+      background: var(--blue-600);
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 8px;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--blue-500) !important; transform: translateY(-1px); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── HERO ──────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero-blob-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(37,99,235,.45) 0%, transparent 70%);
+      top: -120px; left: -180px;
+    }
+    .hero-blob-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,.25) 0%, transparent 70%);
+      bottom: -80px; right: -100px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--blue-400);
+      background: rgba(59,130,246,.1);
+      border: 1px solid rgba(59,130,246,.3);
+      padding: 6px 14px 6px 10px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      animation: fadeUp .6s ease both;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px;
+      background: var(--blue-400);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      animation: fadeUp .6s .1s ease both;
+    }
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, var(--blue-400) 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 40px;
+      animation: fadeUp .6s .2s ease both;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: fadeUp .6s .3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-600);
+      color: #fff;
+      font-size: .95rem;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 24px rgba(37,99,235,.4);
+    }
+    .btn-primary:hover {
+      background: var(--blue-500);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(37,99,235,.55);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-primary);
+      font-size: .95rem;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .btn-secondary:hover {
+      background: rgba(59,130,246,.08);
+      border-color: var(--blue-500);
+      transform: translateY(-2px);
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px;
+      margin-top: 56px;
+      animation: fadeUp .6s .4s ease both;
+    }
+    .stat-item { }
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -.02em;
+    }
+    .stat-label {
+      font-size: .8rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    /* WiFi animation */
+    .hero-visual {
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      animation: fadeUp .8s .4s ease both;
+    }
+    .wifi-ring-wrap {
+      position: relative;
+      width: 360px;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wifi-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(59,130,246,.2);
+      animation: ringPulse 3s ease-in-out infinite;
+    }
+    .wifi-ring:nth-child(1) { width: 100%; height: 100%; animation-delay: 0s; }
+    .wifi-ring:nth-child(2) { width: 73%; height: 73%; animation-delay: .4s; }
+    .wifi-ring:nth-child(3) { width: 47%; height: 47%; animation-delay: .8s; }
+    .wifi-center {
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(135deg, var(--blue-600), #4f46e5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 60px rgba(37,99,235,.6);
+      z-index: 2;
+    }
+
+    /* ─── PRICING ───────────────────────────────────────────────── */
+    #pricing {
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-blob {
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse, rgba(37,99,235,.18) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+      position: relative;
+      z-index: 1;
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      position: relative;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(59,130,246,.06) 0%, transparent 60%);
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .pricing-card:hover { transform: translateY(-6px); border-color: var(--blue-500); box-shadow: 0 20px 60px rgba(37,99,235,.2); }
+    .pricing-card:hover::before { opacity: 1; }
+    .pricing-card.featured {
+      border-color: var(--blue-500);
+      background: linear-gradient(135deg, #0f1e3d 0%, var(--bg-card) 100%);
+    }
+    .featured-badge {
+      position: absolute;
+      top: 18px; right: 18px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--blue-600);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .plan-icon {
+      width: 52px; height: 52px;
+      background: rgba(59,130,246,.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .plan-name {
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--blue-400);
+      margin-bottom: 8px;
+    }
+    .plan-price {
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .plan-price span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .plan-duration {
+      font-size: .85rem;
+      color: var(--text-dim);
+      margin-bottom: 28px;
+    }
+    .plan-features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .9rem;
+      color: var(--text-muted);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .plan-features li:last-child { border-bottom: none; }
+    .check-icon {
+      width: 18px; height: 18px;
+      background: rgba(59,130,246,.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .plan-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px;
+      border-radius: 10px;
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .plan-btn-outline {
+      background: transparent;
+      color: var(--blue-400);
+      border: 1px solid rgba(59,130,246,.35);
+    }
+    .plan-btn-outline:hover { background: rgba(59,130,246,.1); border-color: var(--blue-400); }
+    .plan-btn-solid {
+      background: var(--blue-600);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(37,99,235,.4);
+    }
+    .plan-btn-solid:hover { background: var(--blue-500); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(37,99,235,.5); }
+
+    /* ─── HOW IT WORKS ──────────────────────────────────────────── */
+    #how {
+      position: relative;
+      overflow: hidden;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+      position: relative;
+    }
+    /* connector line */
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 38px;
+      left: calc(12.5% + 24px);
+      right: calc(12.5% + 24px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blue-600), var(--blue-600), transparent);
+      opacity: .35;
+    }
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+      position: relative;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .step-card:hover { transform: translateY(-5px); border-color: var(--blue-500); box-shadow: 0 16px 48px rgba(37,99,235,.18); }
+    .step-number {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--blue-600), #4f46e5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 20px rgba(37,99,235,.4);
+      position: relative;
+      z-index: 1;
+    }
+    .step-icon {
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+    }
+    .step-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step-desc {
+      font-size: .85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── SPEED TEST ────────────────────────────────────────────── */
+    #speed {
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+    .speed-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .speed-text .section-sub { margin-bottom: 32px; }
+    .speed-meter {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .speed-meter::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,.12) 0%, transparent 60%);
+    }
+    .speed-display {
+      position: relative;
+      z-index: 1;
+    }
+    .speed-value {
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 4px;
+      transition: color .3s;
+    }
+    .speed-unit {
+      font-size: .9rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+    .speed-bar-wrap {
+      background: rgba(255,255,255,.06);
+      border-radius: 100px;
+      height: 8px;
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+    .speed-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--blue-600), var(--blue-400));
+      border-radius: 100px;
+      transition: width 2s cubic-bezier(.4,0,.2,1);
+    }
+    .speed-status {
+      font-size: .85rem;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+    #speedTestBtn {
+      background: var(--blue-600);
+      color: #fff;
+      border: none;
+      padding: 13px 32px;
+      border-radius: 10px;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(37,99,235,.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #speedTestBtn:hover { background: var(--blue-500); transform: translateY(-2px); }
+    #speedTestBtn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    /* ─── LOCATIONS ─────────────────────────────────────────────── */
+    #locations {
+      position: relative;
+      overflow: hidden;
+    }
+    .locations-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .location-map {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .location-map::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(37,99,235,.1) 0%, transparent 70%);
+    }
+    .map-dots {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+    .map-dot-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      background: rgba(59,130,246,.07);
+      border: 1px solid rgba(59,130,246,.15);
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+    .map-dot-row:hover { background: rgba(59,130,246,.13); border-color: var(--blue-500); }
+    .dot-pulse {
+      width: 10px; height: 10px;
+      background: var(--blue-400);
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .dot-pulse::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1px solid var(--blue-400);
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+    .dot-label { font-size: .9rem; font-weight: 500; color: var(--text-muted); }
+    .location-text .section-sub { margin-bottom: 28px; }
+    .location-features {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .loc-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .loc-feature:hover { border-color: var(--blue-500); background: var(--bg-card-hover); }
+    .loc-feature-icon {
+      width: 40px; height: 40px;
+      background: rgba(59,130,246,.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .loc-feature-text h4 { font-size: .9rem; font-weight: 600; margin-bottom: 3px; }
+    .loc-feature-text p  { font-size: .82rem; color: var(--text-muted); }
+
+    /* ─── QR CODE ───────────────────────────────────────────────── 
+*/
+    #qr {
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+    .qr-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+    }
+    .qr-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      max-width: 320px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .qr-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,.1) 0%, transparent 60%);
+    }
+    .qr-image-wrap {
+      position: relative;
+      z-index: 1;
+      background: #fff;
+      padding: 16px;
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    }
+    /* Inline SVG QR placeholder */
+    .qr-image-wrap svg { display: block; }
+    .qr-label {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .qr-label h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .qr-label p  { font-size: .82rem; color: var(--text-muted); }
+    .qr-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      max-width: 600px;
+    }
+    .qr-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: .85rem;
+      color: var(--text-muted);
+    }
+    .qr-step-num {
+      width: 24px; height: 24px;
+      background: var(--blue-600);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    /* ─── CONTACT ───────────────────────────────────────────────── */
+    #contact {
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      transition: var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+    .contact-card:hover { transform: translateY(-5px); border-color: var(--blue-500); box-shadow: 0 16px 48px rgba(37,99,235,.18); }
+    .contact-icon {
+      width: 60px; height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-icon.tg  { background: linear-gradient(135deg, #0088cc, #006699); }
+    .contact-icon.ph  { background: linear-gradient(135deg, #22c55e, #16a34a); }
+    .contact-info h3  { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .contact-info p   { font-size: .9rem; color: var(--text-muted); }
+    .contact-info .contact-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--blue-400);
+      margin-top: 8px;
+    }
+    .contact-arrow {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--blue-400);
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .footer-copy {
+      font-size: .82rem;
+      color: var(--text-dim);
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: .82rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--text-primary); }
+
+    /* ─── ANIMATIONS ────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .6; transform: scale(.85); }
+    }
+    @keyframes ringPulse {
+      0%, 100% { opacity: .2; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(1.04); }
+    }
+    @keyframes dotPulse {
+      0%   { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(2.5); }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
+    /* ─── MOBILE NAV ────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(8,12,20,.97);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+        z-index: 999;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1.2rem; }
+      .nav-cta { padding: 12px 28px !important; }
+
+      .hero-visual { display: none; }
+      .hero-content { max-width: 100%; }
+      .hero-title { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+
+      .speed-wrap       { grid-template-columns: 1fr; }
+      .locations-inner  { grid-template-columns: 1fr; }
+      .contact-grid     { grid-template-columns: 1fr; }
+      .steps-grid::before { display: none; }
+
+      .section { padding: 72px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats { gap: 24px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <!-- WiFi Icon -->
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="14" cy="14" r="14" fill="rgba(37,99,235,0.2)"/>
+          <path d="M7 13.5C9.2 11.3 11.9 10 14 10C16.1 10 18.8 11.3 21 13.5" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M9.5 16C11 14.5 12.5 13.5 14 13.5C15.5 13.5 17 14.5 18.5 16" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <circle cx="14" cy="19" r="1.5" fill="#60a5fa"/>
+        </svg>
+        Northern Light WiFi
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#pricing" onclick="closeNav()">ဈေးနှုန်းများ</a></ul></li>
+        <li><a href="#how" onclick="closeNav()">ဘယ်လိုသုံးရမှာလဲ </a></li></li>
+        <li><a href="#locations" onclick="closeNav()">နေရာများ</a></li>
+        <li><a href="#contact" onclick="closeNav()">ဆက်သွယ်ရန်</a></li>
+        <li><a href="https://t.me/NorthernLightWiFi" target="_blank" rel="noopener" class="nav-cta" onclick="closeNav()">Buy WiFi Code</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="blob hero-blob-1"></div>
+  <div class="blob hero-blob-2"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Now Available at Partner Cafes
+      </div>
+      <h1 class="hero-title">
+        Northern Light<br/>
+        <span class="gradient-text">WiFi</span>
+      </h1>
+      <p class="hero-sub">
+        Fast &amp; Affordable Internet for Tea Shops and Cafes.
+        Get connected in seconds — no contracts, no hassle.
+      </p>
+      <div class="hero-actions">
+        <a href="" target="_blank" rel="noopener" class="btn-primary">
+          <a href="https://t.me/nlinternetservice" target="_blank" rel="noopener" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+          Buy WiFi Code
+        </a>
+        <a href="#how" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          How It Works
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-value">၅၀၀<span style="font-size:1.2rem">ကျပ်</span></div>
+          <div class="stat-label">မှ စတင် ဝယ်ယူနိုင်ပြီ</div>
+        </div>
+        <div class="stat-item" style="border-left:1px solid var(--border);padding-left:36px">
+          <div class="stat-value">၁နာရီ</div>
+          <div class="stat-label">2 Gb အင်တာနက်သုံးခွင့် </div>
+        </div>
+        <div class="stat-item" style="border-left:1px solid var(--border);padding-left:36px">
+          <div class="stat-value">24/7</div>
+          <div class="stat-label">Telegram မှ လဲဆက်သွယ် ဝယ်ယူနိုင်ပြီ </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Animated WiFi visual -->
+  <div class="hero-visual">
+    <div class="wifi-ring-wrap">
+      <div class="wifi-ring"></div>
+      <div class="wifi-ring"></div>
+      <div class="wifi-ring"></div>
+      <div class="wifi-center">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <path d="M6 18C10.4 13.6 15 11 20 11C25 11 29.6 13.6 34 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M11 23C14.2 19.8 17 18 20 18C23 18 25.8 19.8 29 23" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M16 28C17.6 26.4 18.8 25.5 20 25.5C21.2 25.5 22.4 26.4 24 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="20" cy="32" r="2" fill="white"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PRICING
+════════════════════════════════════════════════════════════════ -->
+<section id="pricing" class="section">
+  <div class="blob pricing-blob"></div>
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">ဈေးနှုန်းများ</span>
+      <h2 class="section-title">ရိုးရှင်းပြီး သက်သာတဲ့ ဈေးနှုန်း</h2>
+      <p class="section-sub">သင်နဲ့ အဆင်ပြေတဲ့ ပလန်ဝယ်၊ VPN မလို ၊ အကောင်းဆုံး မြန်နှုန်းမြင့် အင်တာနက်</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- 1 Hour -->
+      <div class="pricing-card reveal reveal-delay-1">
+        <div class="plan-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="plan-name">အသက်သာဆုံး ၆ နာရီကြာ သုံးခွင့်</div>
+        <div class="plan-price">၅၀၀ <span>ကျပ်</span></div>
+        <div class="plan-duration">2 GB အင်တာနက်သုံးခွင့်</div>
+        <ul class="plan-features">
+          <li><span class="check-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg></span> Full speed browsing</li>
+          <li><span class="check-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg></span> Instant activation</li>
+          <li><span class="check-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg></span> No registration needed</li>
+        </ul>
+        <a href="https://t.me/nlinternetservice" target="_blank" rel="noopener" class="plan-btn plan-btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+          Buy via Telegram
+        </a>
+      </div>
+      <!-- 3 Hours (featured) -->
+      <div class="pricing-card featured reveal reveal-delay-2">
+        <span class="featured-badge">အတန်ဆုံး ပလန်</span>
+        <div class="plan-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="plan-name">အတန်ဆုံး ၁၂ နာရီကြာ သုံးခွင့်</div>
+        <div class="plan-price">၁၀၀၀ <span>ကျပ်</span></div>
+        <div class="plan-duration"> 5 GB အင်တာနက်သုံးခွင့် </div>
+        <ul class="plan-features">
+          <li><span class="check-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg></span> Full speed browsing</li>
+          <li><span class="check-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg></span> Instant activation</li>
+          <li><span class="check-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg></span> Best value for work</li>
+          <li><span class="check-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg></span> No registration needed</li>
+        </ul>
+        <a href="https://t.me/NorthernLightWiFi" target="_blank" rel="noopener" class="plan-btn plan-btn-solid">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+          Telegram နှင့် အရောင်းဆိုင်များတွင် ဝယ်ယူနိုင်ပြီ
+        </a>
+      </div>
+      <!-- 1 Day -->
+      <div class="pricing-card reveal reveal-delay-3">
+        <div class="plan-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="plan-name">၁၅ ရက် အကန်သတ်မရှိ ပလန် </div>
+        <div class="plan-price">၁၅၀၀၀ <span>ကျပ်</span></div>
+        <div class="plan-duration">၁၅ရက် အင်တာနက်သုံးခွင့် </div>
+        <ul class="plan-features">
+          <li><span class="check-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg></span> Full speed browsing</li>
+          <li><span class="check-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg></span> Instant activation</li>
+          <li><span class="check-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg></span> All-day unlimited use</li>
+          <li><span class="check-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg></span> No registration needed</li>
+        </ul>
+        <a href="https://t.me/nlinternetservice" target="_blank" rel="noopener" class="plan-btn plan-btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+          Telegram တွင် ဝယ်ယူနိုင်ပြီ
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════════════════════ -->
+<section id="how" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">ဘယ်လိုအသုံးပြုရမလဲ</span>
+      <h2 class="section-title">အဆင့် (၄) ဆင့်သာလိုအပ်ပါတယ်</h2>
+      <p class="section-sub">wifi code ဝယ်ယူခြင်းမှ အသုံးပြုသည်အထိ အခက်ခဲမရှိ လူတိုင်း အသုံးပြုနိုင်သည်။  </p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-number">1</div>
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round">
+            <path d="M16 2C9.37 2 4 7.37 4 14s5.37 12 12 12 12-5.37 12-12S22.63 2 16 2z"/>
+            <path d="M12 14l2.5 2.5L20 11"/>
+          </svg>
+        </div>
+        <h3 class="step-title">WIFI CODE ဝယ်ပါ။</h3>
+        <p class="step-desc">နီးစပ်ရာ Northern Light ဆိုင်းဘုတ်ရှိရာဆိုင်မှာဝယ်ယူပါ။ ခဲခြစ်ပါ။</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-number">2</div>
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round">
+            <path d="M4 14C7.6 10.4 11.6 8.5 16 8.5C20.4 8.5 24.4 10.4 28 14"/>
+            <path d="M8 18C10.8 15.2 13.3 13.5 16 13.5C18.7 13.5 21.2 15.2 24 18"/>
+            <path d="M12 22C13.6 20.4 14.8 19.5 16 19.5C17.2 19.5 18.4 20.4 20 22"/>
+            <circle cx="16" cy="26" r="1.5" fill="#60a5fa"/>
+          </svg>
+        </div>
+        <h3 class="step-title">Connect to WiFi</h3>
+        <p class="step-desc">Norhtern Light နာမည်ရှိတဲ့ wifi ကိုချိတ်ဆက်ပါ။</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-number">3</div>
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round">
+            <rect x="6" y="4" width="20" height="24" rx="3"/>
+            <line x1="11" y1="12" x2="21" y2="12"/>
+            <line x1="11" y1="17" x2="21" y2="17"/>
+            <line x1="11" y1="22" x2="17" y2="22"/>
+          </svg>
+        </div>
+        <h3 class="step-title">Enter Code in Portal</h3>
+        <p class="step-desc">ခဲခြစ်ရာမှ ရရှိလာသော နံပတ် (၆) လုံးကို Code ထည့်သည့်နေရာတွင် ထည့်ပါ။ Connect ကိုနှိပ်ပါ။</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-number">4</div>
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="16" cy="16" r="12"/>
+            <path d="M10 16C12 12 14 10 16 10C18 10 20 12 22 16C20 20 18 22 16 22C14 22 12 20 10 16z"/>
+            <circle cx="16" cy="16" r="3"/>
+          </svg>
+        </div>
+        <h3 class="step-title">စတင်အသုံးပြုနိုင်ပါပြီ။</h3>
+        <p class="step-desc">သင့်အတွက် အကောင်းဆုံး အင်တာနက်ကို အသုံးပြုနိုင်ပါပြီ။</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SPEED TEST
+════════════════════════════════════════════════════════════════ -->
+<section id="speed" class="section">
+  <div class="container">
+    <div class="speed-wrap">
+      <div class="speed-text reveal">
+        <span class="section-label">Speed Test</span>
+        <h2 class="section-title">Check Your Connection Speed</h2>
+        <p class="section-sub">Already connected to Northern Light WiFi? Run a quick speed test to see your current download speed.</p>
+        <br/>
+        <a href="https://www.speedtest.net" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Open Full Speed Test
+        </a>
+      </div>
+      <div class="speed-meter reveal reveal-delay-2">
+        <div class="speed-display">
+          <div class="speed-value" id="speedValue">—</div>
+          <div class="speed-unit">Mbps Download</div>
+          <div class="speed-bar-wrap">
+            <div class="speed-bar" id="speedBar"></div>
+          </div>
+          <div class="speed-status" id="speedStatus">Press the button to begin</div>
+          <button id="speedTestBtn" onclick="runSpeedTest()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Run Speed Test
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     LOCATIONS
+════════════════════════════════════════════════════════════════ -->
+<section id="locations" class="section">
+  <div class="container">
+    <div class="locations-inner">
+      <div class="location-text reveal">
+        <span class="section-label">WIFI အသုံးပြုနိုင်သော နေရာများ</span>
+        <h2 class="section-title">Northern Light ဆိုင်းဘုတ်ရှိရာဆိုင်များတွင် wifi code ဝယ်ယူနိုင်ပါသည်။</h2>
+        <p class="section-sub">သုံးဆွဲနိုင်သောနေရာများကို အမြန်ဆုံးချဲထွင်နေပါသည်။ </p>
+        <br/>
+        <div class="location-features">
+          <div class="loc-feature">
+            <div class="loc-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="loc-feature-text">
+              <h4>ညောင်ပင်အောက် လက်ဖက်ရည်ဆိုင်</h4>
+              <p>လက်ဖက်ရည်သောက်ရင်း အထစ်ငေါ့ မရှိတဲ့ အင်တာနက် သုံးလိုက်ပါ။</p>
+            </div>
+          </div>
+          <div class="loc-feature">
+            <div class="loc-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <div class="loc-feature-text">
+              <h4>Partner Cafes</h4>
+              <p>Work or relax with fast internet at your table</p>
+            </div>
+          </div>
+          <div class="loc-feature">
+            <div class="loc-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="loc-feature-text">
+              <h4>Growing Network</h4>
+              <p>New partner locations added regularly</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="location-map reveal reveal-delay-2">
+        <div class="map-dots">
+          <div class="map-dot-row">
+            <div class="dot-pulse"></div>
+            <span class="dot-label">STN အဆောင်များ</span>
+          </div>
+          <div class="map-dot-row">
+            <div class="dot-pulse"></div>
+            <span class="dot-label">ကိုးဆောင်တွဲများ</span>
+          </div>
+          <div class="map-dot-row">
+            <div class="dot-pulse"></div>
+            <span class="dot-label">တရုတ်ဆိုဒ် အဆောင်များ</span>   
+          </div>
+          <div class="map-dot-row">
+            <div class="dot-pulse"></div>
+            <span class="dot-label">Sunrise Cafe — North District</span>
+          </div>
+          <div class="map-dot-row">
+            <div class="dot-pulse"></div>
+            <span class="dot-label">More locations coming soon…</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     QR CODE
+════════════════════════════════════════════════════════════════ -->
+<section id="qr" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">Quick Access</span>
+      <h2 class="section-title">Scan to Buy WiFi Code</h2>
+      <p class="section-sub">Point your phone camera at the QR code to open our Telegram and purchase your voucher instantly.</p>
+    </div>
+    <div class="qr-wrap" style="margin-top:48px">
+      <div class="qr-card reveal">
+        <div class="qr-image-wrap">
+          <!-- QR code SVG generated to encode https://t.me/NorthernLightWiFi -->
+          <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="180" height="180" fill="white"/>
+            <!-- Top-left finder pattern -->
+            <rect x="10" y="10" width="50" height="50" fill="black" rx="4"/>
+            <rect x="18" y="18" width="34" height="34" fill="white" rx="2"/>
+            <rect x="24" y="24" width="22" height="22" fill="black" rx="2"/>
+            <!-- Top-right finder pattern -->
+            <rect x="120" y="10" width="50" height="50" fill="black" rx="4"/>
+            <rect x="128" y="18" width="34" height="34" fill="white" rx="2"/>
+            <rect x="134" y="24" width="22" height="22" fill="black" rx="2"/>
+            <!-- Bottom-left finder pattern -->
+            <rect x="10" y="120" width="50" height="50" fill="black" rx="4"/>
+            <rect x="18" y="128" width="34" height="34" fill="white" rx="2"/>
+            <rect x="24" y="134" width="22" height="22" fill="black" rx="2"/>
+            <!-- Data modules (decorative pattern representing encoded URL) -->
+            <rect x="70" y="10" width="8" height="8" fill="black"/>
+            <rect x="84" y="10" width="8" height="8" fill="black"/>
+            <rect x="98" y="10" width="8" height="8" fill="black"/>
+            <rect x="70" y="24" width="8" height="8" fill="black"/>
+            <rect x="98" y="24" width="8" height="8" fill="black"/>
+            <rect x="70" y="38" width="8" height="8" fill="black"/>
+            <rect x="84" y="38" width="8" height="8" fill="black"/>
+            <rect x="98" y="38" width="8" height="8" fill="black"/>
+            <rect x="70" y="52" width="8" height="8" fill="black"/>
+            <rect x="98" y="52" width="8" height="8" fill="black"/>
+            <rect x="10" y="70" width="8" height="8" fill="black"/>
+            <rect x="24" y="70" width="8" height="8" fill="black"/>
+            <rect x="38" y="70" width="8" height="8" fill="black"/>
+            <rect x="52" y="70" width="8" height="8" fill="black"/>
+            <rect x="70" y="70" width="8" height="8" fill="black"/>
+            <rect x="84" y="70" width="8" height="8" fill="black"/>
+            <rect x="98" y="70" width="8" height="8" fill="black"/>
+            <rect x="112" y="70" width="8" height="8" fill="black"/>
+            <rect x="126" y="70" width="8" height="8" fill="black"/>
+            <rect x="140" y="70" width="8" height="8" fill="black"/>
+            <rect x="154" y="70" width="8" height="8" fill="black"/>
+            <rect x="168" y="70" width="8" height="8" fill="black"/>
+            <rect x="10" y="84" width="8" height="8" fill="black"/>
+            <rect x="38" y="84" width="8" height="8" fill="black"/>
+            <rect x="70" y="84" width="8" height="8" fill="black"/>
+            <rect x="98" y="84" width="8" height="8" fill="black"/>
+            <rect x="126" y="84" width="8" height="8" fill="black"/>
+            <rect x="154" y="84" width="8" height="8" fill="black"/>
+            <rect x="10" y="98" width="8" height="8" fill="black"/>
+            <rect x="24" y="98" width="8" height="8" fill="black"/>
+            <rect x="52" y="98" width="8" height="8" fill="black"/>
+            <rect x="70" y="98" width="8" height="8" fill="black"/>
+            <rect x="84" y="98" width="8" height="8" fill="black"/>
+            <rect x="112" y="98" width="8" height="8" fill="black"/>
+            <rect x="140" y="98" width="8" height="8" fill="black"/>
+            <rect x="168" y="98" width="8" height="8" fill="black"/>
+            <rect x="10" y="112" width="8" height="8" fill="black"/>
+            <rect x="52" y="112" width="8" height="8" fill="black"/>
+            <rect x="84" y="112" width="8" height="8" fill="black"/>
+            <rect x="98" y="112" width="8" height="8" fill="black"/>
+            <rect x="126" y="112" width="8" height="8" fill="black"/>
+            <rect x="154" y="112" width="8" height="8" fill="black"/>
+            <rect x="70" y="126" width="8" height="8" fill="black"/>
+            <rect x="84" y="126" width="8" height="8" fill="black"/>
+            <rect x="112" y="126" width="8" height="8" fill="black"/>
+            <rect x="140" y="126" width="8" height="8" fill="black"/>
+            <rect x="168" y="126" width="8" height="8" fill="black"/>
+            <rect x="70" y="140" width="8" height="8" fill="black"/>
+            <rect x="98" y="140" width="8" height="8" fill="black"/>
+            <rect x="126" y="140" width="8" height="8" fill="black"/>
+            <rect x="154" y="140" width="8" height="8" fill="black"/>
+            <rect x="70" y="154" width="8" height="8" fill="black"/>
+            <rect x="84" y="154" width="8" height="8" fill="black"/>
+            <rect x="98" y="154" width="8" height="8" fill="black"/>
+            <rect x="112" y="154" width="8" height="8" fill="black"/>
+            <rect x="140" y="154" width="8" height="8" fill="black"/>
+            <rect x="168" y="154" width="8" height="8" fill="black"/>
+            <rect x="70" y="168" width="8" height="8" fill="black"/>
+            <rect x="98" y="168" width="8" height="8" fill="black"/>
+            <rect x="126" y="168" width="8" height="8" fill="black"/>
+            <!-- Center Telegram logo overlay -->
+            <rect x="76" y="76" width="28" height="28" rx="6" fill="#2563eb"/>
+            <path d="M82 90l2.5 2.5 5.5-5.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="qr-label">
+          <h3>Open in Telegram</h3>
+          <p>https://t.me/nlinternetservice</p>
+        </div>
+      </div>
+      <div class="qr-steps reveal reveal-delay-1">
+        <div class="qr-step"><span class="qr-step-num">1</span> Open your phone camera</div>
+        <div class="qr-step"><span class="qr-step-num">2</span> Point at the QR code</div>
+        <div class="qr-step"><span class="qr-step-num">3</span> Tap the Telegram link</div>
+        <div class="qr-step"><span class="qr-step-num">4</span> Message us to buy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════════════════════════ -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">ဆက်သွယ်ရန်</span>
+      <h2 class="section-title">ဆက်သွယ်ရန်</h2>
+      <p class="section-sub">မေးခွန်းများရှိပါက Telegram သို့ ဆက်သွယ်ပါ။</p>
+    </div>
+    <div class="contact-grid">
+      <a href="https://t.me/nlinternetservice" target="_blank" rel="noopener" class="contact-card reveal reveal-delay-1">
+        <div class="contact-icon tg">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        </div>
+        <div class="contact-info">
+          <h3>Telegram</h3>
+          <p>Fastest way to buy codes &amp; get support</p>
+          <div class="contact-value">@NorthernLightWiFi</div>
+        </div>
+        <div class="contact-arrow">
+          Open Telegram
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+      <a href="tel:+959976180761" class="contact-card reveal reveal-delay-2">
+        <div class="contact-icon ph">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </div>
+        <div class="contact-info">
+          <h3>Phone</h3>
+          <p>Call us for immediate assistance</p>
+          <div class="contact-value">+95 9 976180761</div>
+        </div>
+        <div class="contact-arrow">
+          Call Now
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#hero" class="footer-logo">
+        <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="14" fill="rgba(37,99,235,0.2)"/>
+          <path d="M7 13.5C9.2 11.3 11.9 10 14 10C16.1 10 18.8 11.3 21 13.5" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M9.5 16C11 14.5 12.5 13.5 14 13.5C15.5 13.5 17 14.5 18.5 16" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <circle cx="14" cy="19" r="1.5" fill="#60a5fa"/>
+        </svg>
+        Northern Light WiFi
+      </a>
+      <ul class="footer-links">
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2025 Northern Light WiFi. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════════════ -->
+<script>
+  /* ── Navbar scroll effect ──────────────────────────────────── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Mobile nav ────────────────────────────────────────────── */
+  function toggleNav() {
+    const links = document.getElementById('navLinks');
+    const ham   = document.getElementById('hamburger');
+    links.classList.toggle('open');
+    ham.classList.toggle('open');
+    document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeNav() {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    const links = document.getElementById('navLinks');
+    const ham   = document.getElementById('hamburger');
+    if (links.classList.contains('open') && !links.contains(e.target) && !ham.contains(e.target)) {
+      closeNav();
+    }
+  });
+
+  /* ── Scroll reveal ─────────────────────────────────────────── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  /* ── Speed Test (simulated) ────────────────────────────────── */
+  function runSpeedTest() {
+    const btn    = document.getElementById('speedTestBtn');
+    const val    = document.getElementById('speedValue');
+    const bar    = document.getElementById('speedBar');
+    const status = document.getElementById('speedStatus');
+
+    btn.disabled = true;
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="animation:spin 1s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Testing…`;
+    val.textContent = '—';
+    val.style.color = 'var(--text-primary)';
+    bar.style.width = '0%';
+    status.textContent = 'Connecting to test server…';
+
+    const phases = [
+      { delay: 600,  msg: 'Measuring latency…',       pct: 10  },
+      { delay: 1200, msg: 'Downloading test data…',   pct: 35  },
+      { delay: 2000, msg: 'Calculating speed…',       pct: 70  },
+      { delay: 2800, msg: 'Finalising results…',      pct: 90  },
+    ];
+
+    phases.forEach(({ delay, msg, pct }) => {
+      setTimeout(() => {
+        status.textContent = msg;
+        bar.style.width = pct + '%';
+      }, delay);
+    });
+
+    setTimeout(() => {
+      // Simulate a realistic speed between 8 – 45 Mbps
+      const speed = (Math.random() * 37 + 8).toFixed(1);
+      const pct   = Math.min(100, (speed / 50) * 100);
+      val.textContent = speed;
+      val.style.color = speed > 20 ? '#4ade80' : speed > 10 ? '#facc15' : '#f87171';
+      bar.style.width  = pct + '%';
+      status.textContent = speed > 20 ? '✓ Great connection!' : speed > 10 ? '✓ Good connection' : '⚠ Moderate speed';
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Test Again`;
+    }, 3400);
+  }
+
+  /* ── Active nav link highlight on scroll ──────────────────── */
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    navAnchors.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--text-primary)'
+        : '';
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>
